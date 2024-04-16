@@ -21,18 +21,32 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
+        
+        spx = -1
+        spy = 0
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
+            spy = -1
             #print("上押された")
-            kk_rct.move_ip([0, -1])
+            #kk_rct.move_ip([0, -1])
+
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip([0, +1])
+            spy = 1
+            #kk_rct.move_ip([0, +1])
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip([-1, 0])
+            spx = -1
+            #kk_rct.move_ip([-1, 0])
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip([+2, 0])#演習課題1
+            spx = 2
+            #kk_rct.move_ip([+2, 0])#演習課題1
+        
+
         else:
-            kk_rct.move_ip([-1, 0])#演習課題1
+            #kk_rct.move_ip([-1, 0])#演習課題1
+            spx = -1
+
+        kk_rct.move_ip(spx, spy)
+            
 
         x = tmr%3200 #練習6 割る数は背景画像の長さによる
         screen.blit(bg_img, [-x, 0])#blitで貼り付け 練習3 #練習6
